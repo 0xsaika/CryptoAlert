@@ -29,6 +29,8 @@ if __name__ == "__main__":
     else:
         currency = sys.argv[1]
         tovalue = sys.argv[2]
+        cnt = 0
+		term = 10
         if len(sys.argv) == 4:
             tuvalue = sys.argv[3]
         else:
@@ -37,8 +39,14 @@ if __name__ == "__main__":
             cvalue = ticker(currency)
             logging.info('Current [ %s ] : %s'%(currency.upper(),cvalue))
             if tovalue <= cvalue:
-                logging.warn('Alert! Current [ %s ] is over then %s'%(currency.upper(),tovalue))
-                alert('Alert! Current [ %s ] is over then %s'%(currency.upper(),tovalue))
+                logging.warn('Alert! Current [ %s ] is over then %s'%(currency.upper(), tovalue))
+				if cnt == term:
+					alert('Alert! Current [ %s / %s ] is over then %s'%(currency.upper(), cvalue, tovalue))
+					cnt = 0
+				cnt += 1
             if tuvalue >= cvalue:
-                logging.warn('WARNING! Current [ %s ] is under then %s'%(currency.upper(),tuvalue))
-                alert('WARNING! Current [ %s ] is under then %s'%(currency.upper(),tuvalue))
+                logging.warn('WARNING! Current [ %s ] is under then %s'%(currency.upper(), tuvalue))
+                if cnt == term:
+                    alert('WARNING! Current [ %s / %s ] is under then %s'%(currency.upper(), cvalue, tuvalue))
+                    cnt = 0 
+                cnt += 1
