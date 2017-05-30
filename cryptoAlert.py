@@ -40,5 +40,5 @@ if __name__ == "__main__":
                 logging.warn('Alert! Current [ %s ] is over then %s'%(currency.upper(),tovalue))
                 alert('Alert! Current [ %s ] is over then %s'%(currency.upper(),tovalue))
             if tuvalue >= cvalue:
-                logging.warn('WARNING! Current [ %s ] is under then %s'%(currency.upper(),tovalue))
-                alert('WARNING! Current [ %s ] is under then %s'%(currency.upper(),tovalue))
+                logging.warn('WARNING! Current [ %s ] is under then %s'%(currency.upper(),tuvalue))
+                alert('WARNING! Current [ %s ] is under then %s'%(currency.upper(),tuvalue))
