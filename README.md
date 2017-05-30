@@ -1,5 +1,5 @@
 # CryptoAlert
-영차영차
+영차영차<br>
 alertValue를 넘어가면 terminal을 통해 notify를 띄워줍니다
 더이상귀찮게 매번 차트를 보지마세요!
 ```
