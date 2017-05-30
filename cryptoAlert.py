@@ -22,7 +22,7 @@ def ticker(currency):
 def alert(description):
     subprocess.Popen('osascript -e \'display notification "'+description+'" with title "CryptoAlert"\'',shell=True)
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     if len(sys.argv) > 4:
         print('usage : cryptoAlert.py <CurrenyType> <alertOverValue> <alertUnderValue>')
         print('CurrenyType : btc, eth, etc, xrp')

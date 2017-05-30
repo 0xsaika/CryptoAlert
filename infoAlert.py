@@ -23,7 +23,7 @@ def ticker(currency):
 def alert(description):
     subprocess.Popen('osascript -e \'display notification "'+description+'" with title "CryptoAlert"\'',shell=True)
 
-if __name__ == "__main__":
+if __name__ == '__main__':
         while 1:
             ETH = ticker('eth')
             XRP = ticker('xrp')
