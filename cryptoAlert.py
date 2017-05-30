@@ -15,8 +15,13 @@ def ticker(currency):
     clist = ['btc','eth','etc','xrp']
     if currency not in clist:
         raise NotImplementedError
-    response = requests.get('https://api.coinone.co.kr/ticker/?currency=%s'%(currency))
-    contents = response.json()
+    try:
+        response = requests.get('https://api.coinone.co.kr/ticker/?currency=%s'%(currency))
+        contents = response.json()
+    except KeyboardInterrupt:
+        exit(-1)
+    except:
+        return -1
     return contents['last']
 
 def alert(description):
@@ -36,7 +41,12 @@ if __name__ == '__main__':
         else:
             tuvalue = 0
         while 1:
-            cvalue = ticker(currency)
+            while 1:
+                cvalue = ticker(currency)
+                if cvalue != -1:
+                    break
+                else:
+                    logging.critical('socket timeout')
             logging.info('Current [ %s ] : %s'%(currency.upper(),cvalue))
             if tovalue <= cvalue:
                 logging.warn('Alert! Current [ %s ] is over then %s'%(currency.upper(), tovalue))
